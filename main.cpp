@@ -5,9 +5,6 @@
 void Decode8086(const std::vector<unsigned char> &binData) {
     for (int i = 0; i < binData.size(); ++i) {
         // extract each opcode and decode it
-        switch (binData[i]) {
-            
-        }
         // using a switch-statement to translate from bin opcode to corresponding
         // mnemonics.
         std::cout << "Byte" << i << ", " << "Opcode: " << std::hex << static_cast<int>(binData[i]) << std::endl;
@@ -17,10 +14,10 @@ void Decode8086(const std::vector<unsigned char> &binData) {
 void decodeInstruction(uint8_t* opcode) {
     std::cout << "opcode :" << std::hex << opcode << std::endl;
     switch (*opcode) {
-        case 0x89:
+        case 0x00:
             std::cout << "NOP - No Operation" << std::endl;
             break;
-        case 0xB8:
+        case 0x89:
             std::cout << "MOV AX, " << std::hex << static_cast<int>(opcode[1]) + (opcode[2] << 8) << std::endl;
             break;
             // Add more cases for different opcodes and instructions
@@ -57,13 +54,10 @@ int main(int argc, char *argv[]) {
     std::ifstream file(argv[1], std::ios::binary);
 
     if (file.is_open()) {
-        ReadFile(file);
-        /*
         std::vector<unsigned char> binData(std::istreambuf_iterator<char>(file), {});
-
         file.close();
 
-        Decode8086(binData);*/
+        Decode8086(binData);
     } else {
         std::cout << "unable to open file" << std::endl;
     }
