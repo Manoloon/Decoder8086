@@ -1,13 +1,20 @@
 #include <iostream>
 #include <vector>
+#include <bitset>
 #include <fstream>
 #include <cstdint>
 
 void decodeInstruction(uint8_t *opcode, std::ofstream &outFile) {
-    //std::cout << "opcode : " << std::hex << static_cast<int>(*opcode) << std::endl;
+    std::cout << "opcode : " << std::hex << static_cast<int>(*opcode) <<"x"<< std::hex << static_cast<int>(*(opcode+1)) << std::endl;
+    std::cout << "opcode binary : " << std::bitset<8>{static_cast<unsigned>(*opcode) };
+    std::cout << " : " << std::bitset<8>{static_cast<unsigned>(*(opcode+1)) } << std::endl;
+
     switch (*opcode) {
+        case 1011: //0xb
+            outFile << "1011 ch, ah" << std::endl;
+            break;
         case 0x88:
-            switch (*(opcode + 1)) {
+            switch (*(opcode+1)) {
                 case 0xe5:
                     outFile << "mov ch, ah" << std::endl;
                     break;
@@ -17,10 +24,13 @@ void decodeInstruction(uint8_t *opcode, std::ofstream &outFile) {
                 case 0xed:
                     outFile << "mov ch, ch" << std::endl;
                     break;
+                case 0x89:
+                    outFile << "mov dh, al" << std::endl;
+                    break;
             }
             break;
         case 0x89:
-            switch (*(opcode + 1)) {
+            switch (*(opcode+1)){
                 case 0xd9:
                     outFile << "mov cx, bx" << std::endl;
                     break;
@@ -76,7 +86,7 @@ int main(int argc, char *argv[]) {
     }
     std::ifstream file(argv[1], std::ios::binary);
     std::ofstream outFile(argv[2]);
-    //std::ofstream outFile("Output.asm");
+
     std::cout << "Decoding instructions from file : "<< argv[1] << std::endl << "And results are output in file: " << argv[2] << std::endl;
     outFile << "bits 16" << std::endl << std::endl;
 
