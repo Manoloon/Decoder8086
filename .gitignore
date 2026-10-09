@@ -27,10 +27,9 @@
 *.lib
 
 # Executables
+*.exe
 *.out
 *.app
-
-.idea/
-cmake-build-debug*/
-CMakeLists.txt
-nasm.exe
+*.idea*
+cmake-*
+build
