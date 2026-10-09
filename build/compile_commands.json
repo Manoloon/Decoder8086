@@ -1,0 +1,14 @@
+[
+{
+  "directory": "D:/Coding/CppProjects/Decoder8086/build",
+  "command": "D:\\Coding\\msys64\\mingw64\\bin\\g++.exe -g -std=gnu++17 -o CMakeFiles\\Decoder8086.dir\\main.cpp.obj -c D:\\Coding\\CppProjects\\Decoder8086\\main.cpp",
+  "file": "D:/Coding/CppProjects/Decoder8086/main.cpp",
+  "output": "D:/Coding/CppProjects/Decoder8086/build/CMakeFiles/Decoder8086.dir/main.cpp.obj"
+},
+{
+  "directory": "D:/Coding/CppProjects/Decoder8086/build",
+  "command": "D:\\Coding\\msys64\\mingw64\\bin\\g++.exe -g -std=gnu++17 -o CMakeFiles\\Decoder8086.dir\\Disassemble8080\\8080.cpp.obj -c D:\\Coding\\CppProjects\\Decoder8086\\Disassemble8080\\8080.cpp",
+  "file": "D:/Coding/CppProjects/Decoder8086/Disassemble8080/8080.cpp",
+  "output": "D:/Coding/CppProjects/Decoder8086/build/CMakeFiles/Decoder8086.dir/Disassemble8080/8080.cpp.obj"
+}
+]

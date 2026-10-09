@@ -1,0 +1,3 @@
+D:/Coding/CppProjects/Decoder8086/build/CMakeFiles/Decoder8086.dir
+D:/Coding/CppProjects/Decoder8086/build/CMakeFiles/edit_cache.dir
+D:/Coding/CppProjects/Decoder8086/build/CMakeFiles/rebuild_cache.dir
