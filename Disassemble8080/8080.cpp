@@ -7,7 +7,7 @@
 #include "Instructions8080.h"
 
 void ReadFile(std::basic_ifstream<char>& newFile, std::ofstream& outFile);
-void Disassemble(uint8_t* opCode, std::ofstream& outFile);
+void Disassemble(const uint8_t* opCode, std::ofstream& outFile);
 int main(int argc, char* argv[])
 {
     if(argc != 3)
@@ -39,24 +39,25 @@ void ReadFile(std::basic_ifstream<char>& newFile, std::ofstream& outFile)
     size_t bufferSize = buffer.size();
     uint8_t* opCodeStream = buffer.data();
 
-    for(size_t i = 0; bufferSize; ++i)
+    for(size_t i = 0;i < bufferSize; ++i)
     {
         Disassemble(&opCodeStream[i],outFile);
         i++;
     }
 }
 
-void Disassemble(uint8_t* opCode, std::ofstream& outFile)
+void Disassemble(const uint8_t* opCode, std::ofstream& outFile)
 {
     std::cout << "opcode : " << std::hex << static_cast<int>(*opCode) <<"x"<< std::hex << static_cast<int>(*(opCode+1)) << std::endl;
     std::cout << "opcode binary : " << std::bitset<8>{static_cast<unsigned>(*opCode) };
     std::cout << " : " << std::bitset<8>{static_cast<unsigned>(*(opCode+1)) } << std::endl;
+    FInst8080 Instructions;
 
-    switch (*opCode)
+    switch (*(opCode+1))
     {
-        case 0x:
     default:
-        std::cout << "unknown instruction : " << std::hex << static_cast<int>(*opCode) << std::endl;
+        std::cout << "unknown instruction : " << std::hex << static_cast<int>(*opCode) <<"x"<< std::hex << static_cast<int>(*(opCode+1)) << std::endl;
+        outFile << "unknown instruction : " << std::hex << static_cast<int>(*opCode) <<"x"<< std::hex << static_cast<int>(*(opCode+1)) << std::endl;
         break;
     }
 }

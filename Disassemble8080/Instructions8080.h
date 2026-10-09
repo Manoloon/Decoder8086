@@ -5,7 +5,7 @@ struct FInst8080
     const char* format;
     uint8_t length;
 };
-static const FInst8080 Inst8080[256] =
+static const struct FInst8080 Inst8080[256] =
 {
     [0x00] = { "NOP", 1 },
 	[0x01] = { "LXI\tB, #$0x%02x%02x", 3 },
